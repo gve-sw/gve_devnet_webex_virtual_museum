@@ -1,0 +1,104 @@
+<!--Copyright (c) 2022 Cisco and/or its affiliates.
+
+ This software is licensed to you under the terms of the Cisco Sample
+ Code License, Version 1.1 (the "License"). You may obtain a copy of the
+ License at
+
+                https://developer.cisco.com/docs/licenses
+
+ All use of the material herein must be in accordance with the terms of
+ the License. All rights not expressly granted by the License are
+ reserved. Unless required by applicable law or agreed to separately in
+ writing, software distributed under the License is distributed on an "AS
+ IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ or implied.-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--Space Widget-->
+    <script src="https://code.s4d.io/widget-space/production/bundle.js"></script>
+    <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css"> 
+
+    <!--Meetings Widget-->
+    <link rel="stylesheet" href="static/css/index.css"> 
+
+    <!--Custom Styles-->
+    <link rel="stylesheet" href="static/css/styles.css"> 
+
+</head>
+
+<body style="margin: 0;">
+
+    <!--Chat header for collapsed chat -->
+    <div id="chat-header-flag" class="chat-header">
+      <span>Chat</span>
+      <button id="toggle-chat-open" class="chat-toggle"> 
+        <span class="material-icons">expand_less</span>
+      </button>
+    </div>
+
+    <!--Chat sliding element with Header-->
+    <div class="sliding-wrapper dismissed">
+      <!--Chat header for expanded chat -->
+      <div class="chat-header">
+        <span>Chat</span>
+        <button id="toggle-chat-close" class="chat-toggle"> 
+          <span class="material-icons">expand_more</span>
+        </button>
+      </div>
+      <!--Webex Spaces Message Widget-->
+      <div id="message-widget"></div>
+    </div>
+    <script>
+      var widgetEl = document.getElementById('message-widget');
+      // Init a new message widget
+      webex.widget(widgetEl).spaceWidget({
+        accessToken: '{{ guest_token }}',
+        destinationId: '{{ tour_space }}',
+        destinationType: 'spaceId',
+        spaceActivities: {"files":false,"meet":false,"message":true,"people":false},
+        initialActivity: 'message',
+        secondaryActivitiesFullWidth: false,
+        composerActions: {"attachFiles":false, "meet":false,"message":false,"people":false},
+        disablePresence: false,
+        disableFlags: true
+      });
+    </script>
+
+    <!--Webex Meetings Widget-->
+    <div id="meetings-widget" 
+    data-token="{{guest_token}}" 
+    data-destination="{{meeting_sip}}"></div>
+    <script src='static/js/index.js'></script>
+
+    <script>
+        /*Chat open and close mechanism*/
+        $('#toggle-chat-open').click(function(event) {
+          
+          if ($('.sliding-wrapper').hasClass('dismissed')) {
+            $('.sliding-wrapper').removeClass('dismissed').addClass('selected').show();
+            $('#chat-header-flag').hide();
+          }
+          event.preventDefault();
+        });
+        $('#toggle-chat-close').click(function(event) {
+          
+          if ($('.sliding-wrapper').hasClass('selected')) { 
+            $('.sliding-wrapper').removeClass('selected').addClass('dismissed').hide();
+            $('#chat-header-flag').show();
+          }
+        event.preventDefault();
+      });
+    </script>
+
+</body>
+
+</html>
