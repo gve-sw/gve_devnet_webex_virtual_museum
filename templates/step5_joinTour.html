@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="https://code.s4d.io/widget-space/production/main.css"> 
 
     <!--Meetings Widget-->
-    <link rel="stylesheet" href="static/css/index.css"> 
+    <link href="https://cdn.jsdelivr.net/gh/WXSD-Sales/EmbeddableMeetingsWidget/docs/webex-widgets.css" />
+    <script src="https://cdn.jsdelivr.net/gh/WXSD-Sales/EmbeddableMeetingsWidget/docs/bundle.js"></script>
 
     <!--Custom Styles-->
     <link rel="stylesheet" href="static/css/styles.css"> 
@@ -73,11 +74,19 @@
       });
     </script>
 
-    <!--Webex Meetings Widget-->
-    <div id="meetings-widget" 
-    data-token="{{guest_token}}" 
-    data-destination="{{meeting_sip}}"></div>
-    <script src='static/js/index.js'></script>
+    <!--Meetings widget-->
+    <div id="embeddable-meetings-widget"></div>
+    <script>
+      // Init a new meetings widget
+      webexMeetingsWidget({accessToken: "{{guest_token}}",
+                            meetingDestination: "{{meeting_sip}}",
+                            theme:"dark",
+                            width:"100vw",
+                            height:"100vh",
+                            layout:"focus",
+                            inMeetingControls:['mute-audio', 'mute-video', 'settings', 'leave-meeting'],
+                            interstitialControls:['mute-audio', 'mute-video', 'settings', 'join-meeting']});
+    </script>
 
     <script>
         /*Chat open and close mechanism*/

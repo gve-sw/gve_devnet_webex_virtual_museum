@@ -1,0 +1,71 @@
+<!--Copyright (c) 2022 Cisco and/or its affiliates.
+
+ This software is licensed to you under the terms of the Cisco Sample
+ Code License, Version 1.1 (the "License"). You may obtain a copy of the
+ License at
+
+                https://developer.cisco.com/docs/licenses
+
+ All use of the material herein must be in accordance with the terms of
+ the License. All rights not expressly granted by the License are
+ reserved. Unless required by applicable law or agreed to separately in
+ writing, software distributed under the License is distributed on an "AS
+ IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ or implied.-->
+
+ {% extends "base.html" %}
+
+ {% block content %}
+ <div class="row">
+     <div class="col-12">       
+         <!--Alert for error message-->
+         {% include "alert.html" %}
+     </div>
+ </div>
+ 
+ <div class="row">
+         
+     <!-- Left Rail -->
+     <div class="col-4">
+     </div>
+ 
+     <!-- Middle Rail -->
+     <div class="col-4">
+         <div class="section" >
+             <div class="panel panel--loose panel--raised base-margin-bottom">
+                <p class="text-center">Welcome to the virtual museum tour: <b> {{ scheduled_tour.meeting_title }} </b></p>
+
+                {% if no_free_tickets == True %}  
+                    <p class="text-center">All booked tickets are used already. Please contact your event organizer.</p>
+                {% else %}
+                <p class="text-center">Please provide your name to join the tour.</p>
+                
+                 <form action="/join?booking_id={{booking_id}}" method="POST" name="envVars"> 
+                     <div class="section">   
+                                                         
+                             <div class="form-group base-margin-bottom">
+                                 <div class="form-group__text">
+                                     <input id="guest_name" name="guest_name" type="text" required="">
+                                     <label for="guest_name" >Name*: </label>
+                                 </div>
+                             </div>
+ 
+                             <input id="booking_id" name="booking_id" type="text" required="" value="{{booking_id}}" hidden>
+ 
+                         <!-- Button area-->
+                         <input id="settings-submit" onclick="" onload="" class="btn btn-primary" type="submit" value="Join Tour">
+                         <span class="required-label pull-right">* required fields</span>
+ 
+                     </div> 
+                 </form>
+                 
+                 {% endif %}
+             </div>
+         </div>
+     </div>
+ 
+     <!-- Right Rail -->
+     <div class="col-4">
+     </div>
+ </div>
+ {%  endblock %}

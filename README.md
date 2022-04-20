@@ -2,7 +2,7 @@
 
 The purpose of this sample code is to show how the Webex Meetings Widget and Webex API can support a museum to provide virtual tours for remote visitors. Besides the workflow around guest user, meeting and space creation for preparation, the demo covers the embedding of the Meetings and Space Widget to deliver the actual event. 
 
-   >  The Meetings Widget doesn't support the distrubution via CDN (yet), but offers a React Widget package. For easier embedding of the Meetings Widget in a HTML template page, this demo relies on a build version of the following [Webex React Meeting Widget Sample](https://github.com/gve-sw/gve_devnet_webex_meetings_widget). The instructions for this sample also describe the embedding process used for this demo in more detail (see section: Embed the Widget as a Component in a Dynamic Template or Static HTML Page). 
+   >  This demo uses the [Embeddable Meeting Widget project](https://github.com/WXSD-Sales/MeetingWidget) to embed the Webex Meetings Widget via CDN link. 
 
 
 ## Contacts
@@ -15,6 +15,18 @@ The purpose of this sample code is to show how the Webex Meetings Widget and Web
 
 ## Workflow
 ![/IMAGES/migration_workflow.png](/IMAGES/workflow.png)
+
+## Preparation
+
+Webex does offer a feature to prompt a user to provide a meeting password for joining an event. We disable this feature for this demo in exchange for an easier workflow for guests based on the Webex Meetings Widget. 
+
+In the [Webex Control Hub](https://admin.webex.com/), go to: 
+
+Services: Meeting > Click the row of the preferred site > Configure Site > Common Settings: Security:
+
+* unselect: Enforce meeting password when joining from video conferencing systems
+* unselect: Enforce meeting password when joining by phone
+
 
 ## Installation
 
@@ -72,7 +84,7 @@ Use the same login for step 6. - 8. :
   > Note: Mac OS hides the .env file in the finder by default. View the demo folder for example with your preferred IDE to make the file visible.
 
 9. Run the application   
-  ```python app.py```
+  ```python3 app.py```
 
 
 Assuming you kept the default parameters for starting the Flask application, the address to navigate to would be:
@@ -85,7 +97,7 @@ If you used an admin account in step 8: It is possible to use a speaker email ad
 
 ## Additional Steps to Demonstrate Access from an External Device
 
-To access this application from an external device it requires to be reachable over an internet accessible URL. Therefore, it can be deployed on different IaaS platform like Heroku, Amazon Web Services Lambda, Google Cloud Platform (GCP) and more. Alternatively, it is possible to use the tool ngrok for this reason. Please be aware that ngrok can be blocked in some corporate networks.
+To access this application from an external device it must be reachable over an internet accessible URL. Therefore, it can be deployed on different IaaS platform like Heroku, Amazon Web Services Lambda, Google Cloud Platform (GCP) and more. Alternatively, it is possible to use the tool ngrok for this reason. Please be aware that ngrok can be blocked in some corporate networks.
 
 
 ## Screenshots
@@ -95,12 +107,12 @@ To access this application from an external device it requires to be reachable o
 ![/IMAGES/step3.png](/IMAGES/step3.png)
 ![/IMAGES/email.png](/IMAGES/email.png)
 ![/IMAGES/step4.png](/IMAGES/step4.png)
-![/IMAGES/step5.png](/IMAGES/step5.png)
 
 
 ## More Useful Resources
  - Webex REST API: https://developer.webex.com/docs/getting-started
  - Webex Widgets: https://developer.webex.com/docs/widgets
+ - Webex Meetings Widget (via CDN links): https://github.com/WXSD-Sales/MeetingWidget
 
 
 ### LICENSE

@@ -85,22 +85,29 @@
             <div class="panel panel--loose panel--raised base-margin-bottom">
                 <h2 class="subtitle">Step 2: Book virtual Museum Tour</h2>
                 This step is typically done by an user of the museum website when booking an  
-                virtual museum tour.
+                virtual museum tour for 1 or more guests.
                
                 <form action="/book" method="POST" name="envVars"> 
                     <div class="section">   
                                                         
                             <div class="form-group base-margin-bottom">
                                 <div class="form-group__text">
-                                    <input id="guest_name" name="guest_name" type="text" required="">
-                                    <label for="guest_name" >Guest Name: </label>
+                                    <input id="booking_person_name" name="booking_person_name" type="text" required="">
+                                    <label for="booking_person_name" >Name: </label>
                                 </div>
                             </div>
 
                             <div class="form-group base-margin-bottom">
                                 <div class="form-group__text">
-                                    <input id="guest_email" name="guest_email" type="email" required="">
-                                    <label for="guest_email">Guest Email: </label>
+                                    <input id="booking_person_email" name="booking_person_email" type="email" required="">
+                                    <label for="booking_person_email">Email: </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group base-margin-bottom">
+                                <div class="form-group__text">
+                                    <input id="ticket_count" name="ticket_count" type="number" required="">
+                                    <label for="ticket_count">Number of Tickets: </label>
                                 </div>
                             </div>
 

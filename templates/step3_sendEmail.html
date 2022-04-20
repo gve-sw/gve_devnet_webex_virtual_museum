@@ -87,26 +87,30 @@
             <div class="panel panel--loose panel--raised base-margin-bottom">
                 <h2 class="subtitle">Step 2: Book virtual Museum Tour</h2>
                 This step is typically done by an user of the museum website when booking an  
-                virtual museum tour.
+                virtual museum tour for 1 or more guests.
                
                 <div class="alert alert--success">
                     <div class="alert__message" style="word-break: break-all;">
                         <span class="text-size-20">Tour successfully booked. An Email has been 
-                            send to the guest.</span>
+                            send to the booking person.</span>
 
                         <div class="half-margin-top">
-                            <div class="text-weight-700"> Guest Information: </div>
+                            <div class="text-weight-700"> Booking Person Information: </div>
                             <div>
                                 <span class="text-weight-700"> Name: </span>
-                                {{ guest_booking.guest_name }}
+                                {{ booking.booking_person_name }}
                             </div> 
                             <div>
                                 <span class="text-weight-700"> Email: </span>
-                                {{ guest_booking.guest_email }}
+                                {{ booking.booking_person_email }}
+                            </div> 
+                            <div>
+                                <span class="text-weight-700"> Number of Tickets: </span>
+                                {{ booking.ticket_count }}
                             </div> 
                             <div>
                                 <span class="text-weight-700"> Booking ID: </span>
-                                {{ guest_booking.booking_id }}
+                                {{ booking.booking_id }}
                             </div> 
                         </div>
                     </div>
@@ -120,7 +124,7 @@
         <div class="section" >
             <div class="panel panel--loose panel--raised base-margin-bottom">
                 <h2 class="subtitle">Step 3: Join Event via Shared Link</h2>
-                The guest can join the event via the link send by email.
+                The guests can join the event via the link send by email.
 
                 <div class="half-margin-top">
                     <span class="text-weight-700">                        

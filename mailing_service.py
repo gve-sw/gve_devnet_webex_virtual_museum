@@ -30,7 +30,7 @@ SENDER_PW = os.environ['SENDER_PW']
 APP_URL = os.environ['APP_URL']
 
 
-def createEmailContent(receiver_name, booking_id, tour_title, tour_date):
+def createEmailContent(receiver_name, booking_id, tour_title, tour_date, ticket_count):
     
     title = "Successful booking of the virtual museum tour: " + tour_title
     join_link= APP_URL + "/join?booking_id=" + booking_id
@@ -42,12 +42,16 @@ def createEmailContent(receiver_name, booking_id, tour_title, tour_date):
                 <p>
                 Dear """ + receiver_name + """,
                 <br/><br/>
-                You successfully booked the virtual tour: <b>""" + tour_title + """</b>.
-                Please join the event by clicking the following link at the """ + tour_date + """:
+                You successfully booked the virtual tour: <b>""" + tour_title + """</b> for a group of <b>"""+ str(ticket_count) +"""</b>  guests.
+                
+                It is possible to join the event by clicking the following link at the """ + tour_date + """:
                 <br/><br/>
-                <a href='"""+join_link+"""'> Click to Join the Tour </a>
-                <br/><br/>                
-                We are looking forward to meeting you!
+                """+join_link+"""
+                <br/><br/>       
+
+                Please share the link with your group of guests. 
+
+                We are looking forward to meeting you all!
                 <br/><br/>
                 Kind regards,<br/>
                 Your Museum Team
@@ -56,22 +60,23 @@ def createEmailContent(receiver_name, booking_id, tour_title, tour_date):
             </body>
             </html>
             """
-    textContent = """Dear """ + receiver_name + """, 
-                You successfully booked the virtual tour: """ + tour_title + """.
-                Please join the event by call the following link at the """ + tour_date + """:
-                """+ join_link +"""              
-                We are looking forward to meeting you!
+    textContent = """Dear """ + receiver_name + """,
+                You successfully booked the virtual tour: """ + tour_title + """ for a group of """+ str(ticket_count) +""" guests.
+                It is possible to join the event by clicking the following link at the """ + tour_date + """:
+                """+join_link+"""      
+                Please share the link with your group of guests. 
+                We are looking forward to meeting you all!
                 Kind regards,
                 Your Museum Team"""
 
     return title, htmlContent, textContent, join_link
 
 
-def sendMail(receiver_name, booking_id, receiver_email, tour_title, tour_date):
+def sendMail(receiver_name, booking_id, receiver_email, tour_title, tour_date, ticket_count):
 
     print('--------------------Send email to participant-----------------------')
 
-    title, html, text, join_link = createEmailContent(receiver_name, booking_id, tour_title, tour_date)
+    title, html, text, join_link = createEmailContent(receiver_name, booking_id, tour_title, tour_date, ticket_count)
 
     sender = SENDER_EMAIL
     

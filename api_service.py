@@ -261,6 +261,11 @@ def getOwnDetails(token):
 
     print('-------------Get people me data------------')
     
+    global USER_TOKEN
+
+    if token == 'user_token':
+        token = USER_TOKEN
+    
     payload={}
     
     headers = {
